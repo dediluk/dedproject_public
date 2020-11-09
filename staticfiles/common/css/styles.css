@@ -24,3 +24,7 @@ footer {
     height: 6vh; /*высота футера будет зависеть от высоты экрана*/
     background-color: #343a40;
 }
+
+.textfor{
+    color: #276fff;
+}
