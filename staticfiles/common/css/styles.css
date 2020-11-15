@@ -21,11 +21,18 @@ footer {
     position: absolute;
     bottom: 0;
     /* width: 1366px; */
-    height: 6vh; /*высота футера будет зависеть от высоты экрана*/
+    height: 7vh; /*высота футера будет зависеть от высоты экрана*/
     background-color: #343a40;
 }
 
-.textfor{
-    text-align: center;
-    color: #276fff;
+p{
+    color: black;
+}
+
+.social_li{
+    display: inline
+}
+
+.social {
+    height:55px;
 }

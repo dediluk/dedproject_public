@@ -80,7 +80,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   text-align: center;
-  color: blue;
+  /* color: blue; */
   margin-top: 0;
   margin-bottom: 1rem;
 }
@@ -200,6 +200,7 @@ figure {
 img {
   vertical-align: middle;
   border-style: none;
+  height: 55px;
 }
 
 svg {
