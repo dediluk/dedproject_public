@@ -6,17 +6,29 @@
 active
 {%endblock%}
 {% block content %}
-<div class="socials_div">
-    <ul с>
-        <li class="social_li">
-            <a href="https://t.me/Dediluk" target="_blank" class="social_link"><img src="{% static 'images/icons/telegram.svg' %}" alt=""
-                                                class="social"></a>
-        </li><a href="https://github.com/dediluk" target="_blank" class="social_link"><img src="{% static 'images/icons/github.svg' %}" alt=""
-                                            class="social"></a>
-        </li><a href="https://www.linkedin.com/in/denis-ilyukovich-a02528182/" target="_blank" class="social_link"><img
-            src="{% static 'images/icons/linkedin.svg' %}" alt=""
-            class="social"></a></li>
-    </ul>
+<div class="container">
+    <div class="about_me_div">
+        <div class="about_img_div">
+            <img class='about_img' src="{% static 'images/photos/about.jpg' %}" alt="">
+        </div>
+        <div class="socials_div">
+            <ul>
+                <li class="social_li">
+                    <a href="https://t.me/Dediluk" target="_blank" class="social_link"><img
+                            src="{% static 'images/icons/telegram.svg' %}" alt="telegram"
+                            class="social"></a>
+                </li>
+                <a href="https://github.com/dediluk" target="_blank" class="social_link"><img
+                        src="{% static 'images/icons/github.svg' %}" alt="github"
+                        class="social"></a>
+                </li><a href="https://www.linkedin.com/in/denis-ilyukovich-a02528182/" target="_blank"
+                        class="social_link"><img
+                    src="{% static 'images/icons/linkedin.svg' %}" alt="linkedin"
+                    class="social"></a></li>
+            </ul>
+        </div>
+    </div>
 </div>
+
 
 {% endblock %}

@@ -12,6 +12,17 @@ body {
     height: 100%;
     margin-bottom: 10vh;
 }
+
+.container{
+    margin-top: 27px;
+}
+
+.social_link:hover{
+    opacity: 0.7;
+}
+
+.socials_div{padding-left: 239px;}
+
 footer {
     width: 100%;
     /* padding-right: 15px; */
@@ -27,6 +38,13 @@ footer {
 
 p{
     color: black;
+}
+
+.about_img_div{}
+
+.about_img{
+    height:300px;
+    float: left;
 }
 
 .social_li{
