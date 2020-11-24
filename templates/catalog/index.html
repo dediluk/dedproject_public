@@ -5,13 +5,17 @@
 active
 {%endblock%}
 {% block content %}
-<p>hello</p>
+
 {% if context %}
-    {% for item in context %}
-    <p>{{item.title}}</p>
-<img src="{{item.image.url}}" alt="">
-   <p>{{item.pages}}</p>
-    {% endfor %}
+
+{% for item in context %}
+<div class="book_preview">
+	{{item.id}}
+	<img class='book_preview_image' src="{{item.image.url}}" alt="">
+	<a href="{% url 'catalog:book_detail' item.id%}" class="book_preview_link"><p class="book_preview_title">{{item.title}}</p></a>
+</div>
+
+{% endfor %}
 
 {% endif %}
 {% endblock %}

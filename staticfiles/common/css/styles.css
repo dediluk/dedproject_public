@@ -17,6 +17,12 @@ body {
     margin-top: 27px;
 }
 
+.content {
+    margin-top: 22px;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
 .social_link:hover{
     opacity: 0.7;
 }
@@ -37,6 +43,7 @@ footer {
 }
 
 p{
+    text-align: inherit;
     color: black;
 }
 
@@ -53,4 +60,27 @@ p{
 
 .social {
     height:55px;
+}
+
+
+/* index hmtl */
+
+.book_preview{
+    align-content: center;
+    height: 350px;
+    width: 200px;
+    float: left;
+}
+
+
+.book_preview_image{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 274px;
+    /* float: left; */
+}
+
+.book_preview_title{
+    text-align: center;
 }
