@@ -1,3 +1,9 @@
+a { text-decoration: none; }
+
+a: hover{
+    text-decoration: none;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -81,6 +87,14 @@ p{
     /* float: left; */
 }
 
+.book_preview_image:hover{
+    opacity: 0.7;
+}
+
 .book_preview_title{
     text-align: center;
+}
+
+.book_preview_title:hover{
+    opacity: 0.7;
 }

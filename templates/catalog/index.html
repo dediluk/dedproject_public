@@ -1,6 +1,8 @@
 {%extends 'base.html' %}
 
-
+{% block title %}
+Главная
+{% endblock %}
 {%block style_main%}
 active
 {%endblock%}
@@ -10,9 +12,10 @@ active
 
 {% for item in context %}
 <div class="book_preview">
-	{{item.id}}
-	<img class='book_preview_image' src="{{item.image.url}}" alt="">
-	<a href="{% url 'catalog:book_detail' item.id%}" class="book_preview_link"><p class="book_preview_title">{{item.title}}</p></a>
+    <a href="{% url 'catalog:book_detail' item.id%}" class="book_preview_link">
+        <img class='book_preview_image' src="{{item.image.url}}" alt="">
+        <p class="book_preview_title">{{item.title}}</p>
+    </a>
 </div>
 
 {% endfor %}
