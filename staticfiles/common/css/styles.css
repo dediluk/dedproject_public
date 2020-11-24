@@ -9,24 +9,36 @@ a: hover{
     padding: 0;
 }
 
-html {
-    position: relative;
-    /* height: 100%; */
-    min-height: 100%;
+html,body {
+    height: 100%; 
+
+
+/*    position: relative;
+    
+    min-height: 100%;*/
 }
-body {
+/*body {
     height: 100%;
     margin-bottom: 10vh;
 }
+*/
+
+.wrapper {
+    position: relative;
+    min-height: 100%;
+}
 
 .container{
+
     margin-top: 27px;
 }
 
 .content {
+    height: 82vh;
     margin-top: 22px;
     margin-left: 150px;
     margin-right: 150px;
+    padding-bottom: 90px;
 }
 
 .social_link:hover{
@@ -36,6 +48,10 @@ body {
 .socials_div{padding-left: 239px;}
 
 footer {
+    height: 80px;
+    left: 0;
+
+
     width: 100%;
     /* padding-right: 15px; */
     /* padding-left: 15px; */
@@ -44,7 +60,7 @@ footer {
     position: absolute;
     bottom: 0;
     /* width: 1366px; */
-    height: 7vh; /*высота футера будет зависеть от высоты экрана*/
+    /*height: 7vh; высота футера будет зависеть от высоты экрана*/
     background-color: #343a40;
 }
 
@@ -76,6 +92,7 @@ p{
     height: 350px;
     width: 200px;
     float: left;
+    /* margin-bottom: 15px; */
 }
 
 
