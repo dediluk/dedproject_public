@@ -44,8 +44,8 @@ html,body{
 
     /*height: 82vh;*/
     margin-top: 22px;
-    margin-left: 122px;
-    margin-right: 90px;
+    margin-left: 115px;
+    margin-right: 110px;
     
 }
 
@@ -90,6 +90,11 @@ p{
     /* margin-bottom: 15px; */
 }
 
+.book_preview:hover{
+      -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
 
 .book_preview_image{
     display: block;
@@ -100,7 +105,9 @@ p{
 }
 
 .book_preview_image:hover{
-    opacity: 0.7;
+    /*opacity: 0.7;*/
+
+
 }
 
 .book_preview_title{
