@@ -6,4 +6,12 @@ active
 {%endblock%}
 {% block content %}
 <p>hello</p>
+{% if context %}
+    {% for item in context %}
+    <p>{{item.title}}</p>
+<img src="{{item.image.url}}" alt="">
+   <p>{{item.pages}}</p>
+    {% endfor %}
+
+{% endif %}
 {% endblock %}

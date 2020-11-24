@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = '2u@wd#80b&ix8)!c099o#^vx)$sf5h9!tm8fm_s+j!p1%$o^6!'
 DEBUG = True
 
 ALLOWED_HOSTS = ['0.0.0.0:5000', '127.0.0.1', '127.0.0.1:8000', 'dedproject.herokuapp.com']
-
 
 # Application definition
 
@@ -73,7 +71,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'dedproject.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -81,13 +78,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'd2gm16hdfjj8qk',
-	'USER': 'mgfqcjwlbkmojo',
-	'PASSWORD': '86490f1664508cb3c5d6b0bc12391bf953e15f62e04d8ff86a0b9927f0ba5b08',
-	'HOST': 'ec2-54-82-208-124.compute-1.amazonaws.com',
-	'PORT':'5432',
+        'USER': 'mgfqcjwlbkmojo',
+        'PASSWORD': '86490f1664508cb3c5d6b0bc12391bf953e15f62e04d8ff86a0b9927f0ba5b08',
+        'HOST': 'ec2-54-82-208-124.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -107,7 +103,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -121,10 +116,12 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 STATIC_URL = '/staticfiles/'
 STATIC_DIR = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # STATICFILES_DIRS = [STATIC_DIR]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
