@@ -32,12 +32,12 @@
             {% if user.is_authenticated %}
             <!--            <img src="{{user.userprofile.avatar.url}}" alt="">-->
             {% if user.is_superuser %}
-            <a class="nav-link nav-link-username" href="{% url 'admin:index' %}">{{user.get_username|title}}</a>
+            <a class="nav-link" href="{% url 'admin:index' %}">{{user.get_username|title}}</a>
 
             {% endif %}
-            <a class="nav-link nav-link-username" href="{% url 'logout' %}?next={{request.path}}">Выйти</a>
+            <a class="nav-link" href="{% url 'logout' %}?next={{request.path}}">Выйти</a>
             {% else %}
-            <a class="nav-link nav-link-username" href="{% url 'login' %}?next={{request.path}}">Войти</a>
+            <a class="nav-link" href="{% url 'login' %}?next={{request.path}}">Войти</a>
             {% endif %}
 
 
