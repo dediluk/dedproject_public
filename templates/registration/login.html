@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %} Вход {% endblock %}
+
+{% block breadcrumbs %}
+
+{% endblock %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>Error</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+        <p>Нет доступа</p>
+    {% else %}
+<!--        <p>Войдите в аккаунт, чтобы увидеть данную страницу</p>-->
+    {% endif %}
+{% endif %}
+<div class="login_div">
+    <form method='post' action="{% url 'login' %}">
+        {% csrf_token %}
+        <input type="text" placeholder="Логин" name="username" ><br>
+        <input type="password" placeholder="Пароль" name="password" >
+
+        <p class="login_button"><button type="submit" class="btn btn-primary  login_button" value="login">Войти</button></p>
+        <p class="login_button"><a href="{% url 'catalog:register' %}" class="register_link"><button type="button" class="btn btn-primary  login_button" value="login">Регистрация</button></a></p>
+        <input type="hidden" name="next" value="{{next}}">
+
+    </form>
+
+</div>
+    <p class='lost_password_link'><a class='lost_password_link' href="{% url 'password_reset'%}">Забыли пароль?</a></p>
+
+{% endblock content %}

@@ -28,6 +28,19 @@
                     <a class="nav-link" href="{% url 'catalog:aboutMe'%}">О себе</a>
                 </li>
             </ul>
+
+            {% if user.is_authenticated %}
+            <!--            <img src="{{user.userprofile.avatar.url}}" alt="">-->
+            {% if user.is_superuser %}
+            <a class="nav-link nav-link-username" href="{% url 'admin:index' %}">{{user.get_username|title}}</a>
+
+            {% endif %}
+            <a class="nav-link nav-link-username" href="{% url 'logout' %}?next={{request.path}}">Выйти</a>
+            {% else %}
+            <a class="nav-link nav-link-username" href="{% url 'login' %}?next={{request.path}}">Войти</a>
+            {% endif %}
+
+
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> Поиск</button>

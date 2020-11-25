@@ -9,5 +9,6 @@ app_name = 'catalog'
 urlpatterns = [
     path('about', aboutMe, name='aboutMe'),
     path('', index, name='index'),
-    path('<int:pk>/', BookDetail.as_view(), name='book_detail')
+    path('<int:pk>/', BookDetail.as_view(), name='book_detail'),
+    path('accounts/register/', RegisterFormView.as_view(), name='register')
 ]
