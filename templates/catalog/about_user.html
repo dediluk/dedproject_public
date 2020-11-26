@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{%block title%} {{user.username|title}} {%endblock%}
+
+{% block content %}
+<p class="username">{{user.is_staff}}</p>
+{% endblock %}

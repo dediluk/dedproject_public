@@ -1,0 +1,16 @@
+ {% extends 'base.html' %}
+{% block title %} Мои книги {% endblock %}
+ {%block style_mybooks%} active {%endblock%}
+ {%block content%}
+ {% if request.user.is_anonymous %}
+ <p class="anonymous"><a href="{% url 'login' %}?next={{request.path}}" class="login_link"> Войдите</a>, что увидеть список своих книг.</p>
+ {% else %}
+ {% if list %}
+ {%for item in list%}
+ <p>{{item.book}}</p>
+ {% endfor %}
+ {% else %}
+ <p class="empty_list">Список ваших книг пуск. <a href="{% url 'catalog:index' %}" class="index_link">Перейти к книгам</a> </p>
+ {% endif %}
+ {% endif %}
+ {% endblock %}

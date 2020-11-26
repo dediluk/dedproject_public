@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Book(models.Model):
@@ -15,3 +16,13 @@ class Book(models.Model):
 
     class Meta:
         ordering = ['title']
+
+
+class MyBooksList(models.Model):
+    user = models.ForeignKey(User,
+                             on_delete=models.DO_NOTHING, related_name='userslist')
+    book = models.ForeignKey(Book,
+                             on_delete=models.DO_NOTHING, related_name='bookslist')
+
+    class Meta:
+        unique_together = ['user', 'book']

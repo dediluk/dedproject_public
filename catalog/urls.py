@@ -10,5 +10,7 @@ urlpatterns = [
     path('about', aboutMe, name='aboutMe'),
     path('', index, name='index'),
     path('<int:pk>/', BookDetail.as_view(), name='book_detail'),
-    path('accounts/register/', RegisterFormView.as_view(), name='register')
+    path('accounts/register/', RegisterFormView.as_view(), name='register'),
+    path('about_user/<str:username>', about_user, name='about_user'),
+    path('mybookslist/', myBooksList, name='mybookslist')
 ]

@@ -8,6 +8,7 @@ active
 {%endblock%}
 {% block content %}
 
+
 {% if context %}
 
 {% for item in context %}
@@ -21,5 +22,5 @@ active
 {% endfor %}
 
 {% endif %}
-{{sum}}
+<p class="pages_sum">Общее количество страниц: {{sum}}</p>
 {% endblock %}

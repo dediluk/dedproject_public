@@ -1,7 +1,7 @@
-a { text-decoration: none;
+.nav-link{ text-decoration: none;
  color:rgba(255, 255, 255, 0.5)}
 
-a:hover{
+.nav-link:hover{
     text-decoration: none;
     color:rgba(255, 255, 255, 0.75);
 }
@@ -118,4 +118,14 @@ p{
 
 .book_preview_title:hover{
     opacity: 0.7;
+}
+
+
+.index_link, .login_link {
+    color:#343a40a3;
+}
+
+.index_link, .login_link: hover{
+color:#343a40;
+
 }
