@@ -14,7 +14,7 @@ def aboutMe(request):
 
 class RegisterFormView(FormView):
     form_class = UserCreationForm
-    success_url = "/accounts/registration/?next=/mybooks"
+    success_url = "/accounts/registration/?next=/catalog"
     template_name = 'registration/register.html'
 
     def form_valid(self, form):
@@ -39,7 +39,6 @@ class BookDetail(DetailView):
 
 
 def about_user(request, username):
-    print('IN==========================')
     user = User.objects.get(Q(username=username.title()) | Q(username=username.lower()))
     return render(request, 'catalog/about_user.html', {'user': user})
 
@@ -56,12 +55,17 @@ def about_user(request, username):
 # return MyBooksList.objects.filter(user=self.request.user)
 
 def myBooksList(request):
-    if request.user.is_anonymous:
-        list = 'Войдите, что увидеть список своих книг.'
-    else:
-        list = MyBooksList.objects.filter(user=request.user)
+    print(not request.user.is_authenticated)
+    if request.user.is_anonymous or not request.user.is_authenticated:
+        list_of_mybook = 'Войдите, что увидеть список своих книг.'
+        sum_pages = 0
+    elif request.user.is_authenticated:
+        list_of_mybook = MyBooksList.objects.filter(user=request.user)
+        sum_pages = 0
+        for i in list_of_mybook:
+            sum_pages += i.book.pages
 
-    return render(request, 'catalog/mybookslist.html', {'list': list})
+    return render(request, 'catalog/mybookslist.html', {'list_of_mybook': list_of_mybook, 'sum_pages': sum_pages})
 
 #
 # class MyBooksListCreate(CreateView):

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %} Регистрация {% endblock %}
+
+{% block content %}
+<div class="register_form_div">
+    {% if not user.is_authenticated %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p class="regisster_button"><button type="submit" class="btn btn-primary register_button" value="login">Зарегистрировать</button></p>
+
+    </form>
+    {% else %}
+    <p class="is_authenticated_p">У вас уже есть аккаунт</p>
+    {% endif %}
+</div>
+
+{% endblock %}s

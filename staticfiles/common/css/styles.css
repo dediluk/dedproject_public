@@ -12,18 +12,13 @@
 }
 
 html,body{
-    height: 100%; 
-
-
-/*    position: relative;
-    
-    min-height: 100%;*/
-}
-/*body {
     height: 100%;
-    margin-bottom: 10vh;
 }
-*/
+
+li {
+    color:black;
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -98,6 +93,10 @@ p{
   transform: scale(1.05);
 }
 
+.book_preview_link:hover{
+    text-decoration: none;
+}
+
 .book_preview_image{
     display: block;
     margin-left: auto;
@@ -128,4 +127,62 @@ p{
 .index_link, .login_link: hover{
 color:#343a40;
 
+}
+
+
+
+.register_form_div, .login_div{
+    margin-top: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.login_button {
+    margin-top: 4px;
+    text-align:center;
+}
+
+.register_button {
+    text-align:center;
+}
+
+.lost_password_link{
+    text-align:center;
+}
+
+
+input[type=text], input[type=email]{
+      background-color: #f6f6f6;
+      border: none;
+      padding: 4px;
+      color: #0d0d0d;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px;
+      border: 2px solid #f6f6f6;
+      border-radius: 5px 5px 5px 5px;
+}
+
+input[type=text]:focus{
+    background-color:#fff;
+    border-bottom:2px solid #5fbae9;
+}
+
+
+input[type=password],textarea, input[type=file], select{
+      background-color: #f6f6f6;
+      border: none;
+      padding: 4px;
+      color: #0d0d0d;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 5px;
+      border: 2px solid #f6f6f6;
+      border-radius: 5px 5px 5px 5px;
 }

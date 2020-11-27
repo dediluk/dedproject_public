@@ -10,7 +10,7 @@ active
 
 
 {% if context %}
-
+<p class="pages_sum">Общее количество страниц: {{sum}}</p>
 {% for item in context %}
 <div class="book_preview">
     <a href="{% url 'catalog:book_detail' item.id%}" class="book_preview_link">
@@ -22,5 +22,5 @@ active
 {% endfor %}
 
 {% endif %}
-<p class="pages_sum">Общее количество страниц: {{sum}}</p>
+
 {% endblock %}
