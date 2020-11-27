@@ -14,7 +14,7 @@ def aboutMe(request):
 
 class RegisterFormView(FormView):
     form_class = UserCreationForm
-    success_url = "/accounts/registration/?next=/catalog"
+    success_url = "/accounts/registration/?next=/"
     template_name = 'registration/register.html'
 
     def form_valid(self, form):
