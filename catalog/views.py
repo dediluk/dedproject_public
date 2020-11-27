@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.db.models import Sum, Q
+from django.urls import reverse, reverse_lazy
 from django.views.generic import FormView, ListView, CreateView
 from django.views.generic.detail import DetailView
 from .models import *
@@ -14,7 +15,8 @@ def aboutMe(request):
 
 class RegisterFormView(FormView):
     form_class = UserCreationForm
-    success_url = "/accounts/registration/?next=/"
+    success_url = reverse_lazy('catalog:index')
+                  # "/accounts/registration/?next=/mybookslist/"
     template_name = 'registration/register.html'
 
     def form_valid(self, form):
