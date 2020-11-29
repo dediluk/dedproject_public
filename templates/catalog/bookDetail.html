@@ -5,5 +5,30 @@
 
 
 {% block content %}
+<div class="book_details">
+    <div class="image_and_button">
+        <img class='book_detail_image' src="{{book.image.url}}" alt="">
+        {% if not marker %}
+        <p class="p_add_to_booklist_link">
+            <a href="{% url 'catalog:add_to_booklist' book.title%}" class="">
+            <button type="button" class="btn btn-primary register_button" onclick="return confirm('Вы уверены?');">
+                Добавить
+            </button>
+            </a>
+        </p>
+        {% else %}
+        <p class="p_delete_from_booklist_link">
+            <a href="{% url 'catalog:delete_from_booklist' book.title%}" class="">
+            <button type="button" class="btn btn-danger register_button" onclick="return confirm('Вы уверены?');">
+                Удалить
+            </button>
+            </a>
+        </p>
+        {% endif %}
+    </div>
+
+    <h4 class="book_detail_title">{{book.title}}</h4>
+</div>
+
 
 {% endblock %}

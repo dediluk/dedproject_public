@@ -10,8 +10,8 @@
  {%for item in list_of_mybook%}
  <div class="book_preview">
     <a href="{% url 'catalog:book_detail' item.id%}" class="book_preview_link">
-        <img class='book_preview_image' src="{{item.book.image.url}}" alt="">
-        <p class="book_preview_title">{{item.book.title}}</p>
+        <img class='book_preview_image' src="{{item.book_list.image.url}}" alt="">
+        <p class="book_preview_title">{{item.book_list.title}}</p>
     </a>
 </div>
 

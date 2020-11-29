@@ -1,3 +1,5 @@
+/* base html */
+
 .nav-link{ text-decoration: none;
  color:rgba(255, 255, 255, 0.5)}
 
@@ -46,19 +48,31 @@ li {
     
 }
 
-.social_link:hover{
-    opacity: 0.7;
+
+footer {
+    flex: 0 0 auto;
+    width: 100%;
+    bottom: 0;
+    height: 7vh;
+    background-color: #343a40;
 }
-
-.socials_div{padding-left: 239px;}
-
-footer {/*    height: 80px;
-    margin-top: -80px;*/flex: 0 0 auto;width: 100%;/* padding-right: 15px; *//* padding-left: 15px; *//* margin-right: auto; *//* margin-left: auto; *//* position: fixed; */bottom: 0;/* width: 1366px; */height: 7vh; /*высота футера будет зависеть от высоты экрана*/background-color: #343a40;}
 
 p{
     text-align: inherit;
     color: black;
 }
+
+h4 {
+    color: black;
+}
+
+/* end base html */
+
+.social_link:hover{
+    opacity: 0.7;
+}
+
+.socials_div{padding-left: 239px;}
 
 .about_img_div{}
 
@@ -84,7 +98,6 @@ p{
     width: 200px;
     float: left;
     margin-right: 10px;
-    /* margin-bottom: 15px; */
 }
 
 .book_preview:hover{
@@ -129,7 +142,7 @@ color:#343a40;
 
 }
 
-
+/* login and registration form */
 
 .register_form_div, .login_div{
     margin-top: 38px;
@@ -186,3 +199,26 @@ input[type=password],textarea, input[type=file], select{
       border: 2px solid #f6f6f6;
       border-radius: 5px 5px 5px 5px;
 }
+
+/* end login and registration form */
+
+
+/* book details */
+.book_detail_image{
+    height:274px;
+}
+
+.book_detail_title{
+    margin-left: 195px;
+}
+
+.p_add_to_booklist_link, .p_delete_from_booklist_link{
+    margin-top: 9px;
+    text-align:center;
+}
+
+.image_and_button{
+    width:174px;
+    float: left;
+}
+/* end book details */
