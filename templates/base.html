@@ -43,8 +43,9 @@
             {% endif %}
 
 
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Search">
+            <form action="{% url 'catalog:search'%}" class="form-inline my-2 my-lg-0" method="get">
+                {% csrf_token %}
+                <input name='search' class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> Поиск</button>
             </form>
         </div>

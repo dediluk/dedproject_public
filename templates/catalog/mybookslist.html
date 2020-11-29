@@ -6,10 +6,10 @@
  <p class="anonymous"><a href="{% url 'login' %}?next={{request.path}}" class="login_link"> Войдите</a>, что увидеть список своих книг.</p>
  {% else %}
  {% if list_of_mybook %}
- <p class="pages_sum">Общее количество страниц: {{sum_pages}}</p>
+ <p class="pages_sum">Общее количество страниц: {{sum_pages}} </p>
  {%for item in list_of_mybook%}
  <div class="book_preview">
-    <a href="{% url 'catalog:book_detail' item.id%}" class="book_preview_link">
+    <a href="{% url 'catalog:book_detail' item.book_list.id%}" class="book_preview_link">
         <img class='book_preview_image' src="{{item.book_list.image.url}}" alt="">
         <p class="book_preview_title">{{item.book_list.title}}</p>
     </a>

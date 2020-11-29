@@ -218,7 +218,13 @@ input[type=password],textarea, input[type=file], select{
 }
 
 .image_and_button{
-    width:174px;
+    width:192px;
     float: left;
+}
+
+
+.image_detail_div{
+    /* margin: 0 auto; */
+    text-align: center;
 }
 /* end book details */

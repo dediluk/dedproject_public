@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if object_list%}
+hi
+{% endif %}
+{%for item in object_list%}
+ <div class="book_preview">
+    <a href="{% url 'catalog:book_detail' item.id%}" class="book_preview_link">
+        <img class='book_preview_image' src="{{item.image.url}}" alt="">
+        <p class="book_preview_title">{{item.title}}</p>
+    </a>
+</div>
+
+ {% endfor %}
+
+{% endblock %}

@@ -27,7 +27,6 @@ class RegisterFormView(FormView):
         return super(RegisterFormView, self).form_valid(form)
 
     def form_invalid(self, form):
-        print('=====================================')
         return super(RegisterFormView, self).form_invalid(form)
 
 
@@ -46,7 +45,7 @@ def book_detail(request, pk):
         if i.book_list == book:
             marker = True
             break
-    return render(request, 'catalog/bookDetail.html', {'book': book, 'marker':marker})
+    return render(request, 'catalog/bookDetail.html', {'book': book, 'marker': marker})
 
 
 # class BookDetail(DetailView):
@@ -71,6 +70,7 @@ def add_to_booklist(request, title):
     messages.info(request, 'The item was added to your wishlist')
     return redirect('catalog:index')
 
+
 @login_required
 def delete_from_booklist(request, title):
     book = Book.objects.get(title=title)
@@ -78,6 +78,7 @@ def delete_from_booklist(request, title):
     bl.get(book_list=book).delete()
     messages.info(request, 'The item was deleted to your wishlist')
     return redirect('catalog:index')
+
 
 # class MyBookslist(ListView):
 #     model = MyBooksList
@@ -99,10 +100,28 @@ def myBooksList(request):
 
         sum_pages = 0
         for i in list_of_mybook:
-            print(dir(i))
             sum_pages += i.book_list.pages
 
     return render(request, 'catalog/mybookslist.html', {'list_of_mybook': list_of_mybook, 'sum_pages': sum_pages})
+
+
+class SearchResult(ListView):
+    model = Book
+    template_name = 'catalog/search.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('search')
+        object_list = Book.objects.filter(Q(title__icontains=query.lower()) | Q(title__icontains=query.title()))
+        print(object_list)
+        return object_list
+
+# def search(request):
+#     search = request.search
+#     book = Book.objects.get(title__contains=search)
+#     print(book)
+#     if book:
+#         return render(request, 'catalog/search.html', {'book':book})
+#     return render(request, 'catalog/search.html', {'book': book})
 
 # def add_to_booklist(request, pk):
 #     print('hi')

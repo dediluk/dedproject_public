@@ -7,7 +7,9 @@
 {% block content %}
 <div class="book_details">
     <div class="image_and_button">
+        <div class="image_detail_div">
         <img class='book_detail_image' src="{{book.image.url}}" alt="">
+            </div>
         {% if not marker %}
         <p class="p_add_to_booklist_link">
             <a href="{% url 'catalog:add_to_booklist' book.title%}" class="">
