@@ -39,12 +39,13 @@ def index(request):
 
 def book_detail(request, pk):
     book = Book.objects.get(pk=pk)
-    bl = BookList.objects.filter(user=request.user)
     marker = False
-    for i in bl:
-        if i.book_list == book:
-            marker = True
-            break
+    if request.user.is_authenticated:
+        bl = BookList.objects.filter(user=request.user)
+        for i in bl:
+            if i.book_list == book:
+                marker = True
+                break
     return render(request, 'catalog/bookDetail.html', {'book': book, 'marker': marker})
 
 
