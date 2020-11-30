@@ -220,7 +220,7 @@ input[type=password],textarea, input[type=file], select{
     margin-left: 200px;
 }
 
-.p_add_to_booklist_link, .p_delete_from_booklist_link, .p_delete_from_db{
+.p_add_to_booklist_link, .p_delete_from_booklist_link, .p_delete_from_db, .p_edit_data{
     margin-top: 9px;
     text-align:center;
 }

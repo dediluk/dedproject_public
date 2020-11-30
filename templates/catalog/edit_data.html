@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Введите имя</label><br>
+            <input type="text" name="title" value="{{book.title}}" />
+        </p>
+        <p>
+            <label>Введите возраст</label><br>
+            <input type="number" name="pages" value="{{book.pages}}" />
+        </p>
+            <p>
+            <label>Введите возраст</label><br>
+            <input type="file" name="image" accept="image/*" id="id_image">
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+{% endblock %}

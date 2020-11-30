@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .forms import *
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Sum, Q
 from django.urls import reverse, reverse_lazy
@@ -98,6 +98,25 @@ def delete_from_booklist(request, title):
     bl.get(book_list=book).delete()
     messages.info(request, 'The item was deleted to your wishlist')
     return redirect(request.META.get('HTTP_REFERER'))
+
+
+def edit_data(request, pk):
+    try:
+        book = Book.objects.get(pk=pk)
+        if request.method == 'POST':
+            book.title = request.POST.get('title')
+            book.pages = request.POST.get('pages')
+            print('============================')
+            print(request.POST.get('image'))
+            if request.POST.get('image'):
+                book.image = request.POST.get('image')
+            book.save()
+            return render(request, 'catalog/bookDetail.html', {'book':book})
+        else:
+            return render(request, "catalog/edit_data.html", {"book": book})
+    except Book.DoesNotExist:
+        return HttpResponseNotFound("<h2>Person not found</h2>")
+
 
 
 # class MyBookslist(ListView):

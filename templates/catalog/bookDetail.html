@@ -36,6 +36,14 @@
                 </button>
             </a>
         </p>
+        <p class="p_edit_data">
+            <a href="{% url 'catalog:edit_data' book.id %}" class="">
+                <button type="button" class="btn btn-danger register_button">
+                    Редактировать
+                </button>
+            </a>
+        </p>
+
         {% endif %}
     </div>
 

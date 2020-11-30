@@ -16,5 +16,6 @@ urlpatterns = [
     path('delete_from_booklist/<str:title>', delete_from_booklist, name='delete_from_booklist'),
     path('search/', SearchResult.as_view(), name='search'),
     path('add_book/', add_book, name='add_book'),
-    path('delete_book/<int:pk>', delete_book, name='delete_book')
+    path('delete_book/<int:pk>', delete_book, name='delete_book'),
+    path('edit_data/<int:pk>', edit_data, name='edit_data')
 ]
