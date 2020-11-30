@@ -39,13 +39,10 @@ li {
     box-sizing: border-box;
     min-height: 100%;
     padding-bottom: 90px;
-
-
     /*height: 82vh;*/
     margin-top: 22px;
     margin-left: 115px;
     margin-right: 110px;
-    
 }
 
 
@@ -91,13 +88,22 @@ h4 {
 
 
 /* index hmtl */
+.adding_book_button{ margin-right: 15px; margin-top: -6px;float: right;/* text-align:right; */}
+
+.pages_sum{
+    float: left;
+}
+
+.status_bar{
+    margin-bottom: 49px;
+}
 
 .book_preview{
     align-content: center;
     height: 350px;
     width: 200px;
     float: left;
-    margin-right: 10px;
+    margin-right: 11px;
 }
 
 .book_preview:hover{
@@ -155,10 +161,12 @@ color:#343a40;
 .login_button {
     margin-top: 4px;
     text-align:center;
+    font-size: revert;
 }
 
 .register_button {
     text-align:center;
+    font-size: revert;
 }
 
 .lost_password_link{
@@ -209,10 +217,10 @@ input[type=password],textarea, input[type=file], select{
 }
 
 .book_detail_title{
-    margin-left: 195px;
+    margin-left: 200px;
 }
 
-.p_add_to_booklist_link, .p_delete_from_booklist_link{
+.p_add_to_booklist_link, .p_delete_from_booklist_link, .p_delete_from_db{
     margin-top: 9px;
     text-align:center;
 }
@@ -227,4 +235,5 @@ input[type=password],textarea, input[type=file], select{
     /* margin: 0 auto; */
     text-align: center;
 }
+
 /* end book details */

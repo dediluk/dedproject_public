@@ -1,8 +1,8 @@
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-
+from .forms import *
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Sum, Q
@@ -12,7 +12,7 @@ from django.views.generic.detail import DetailView
 from .models import *
 
 
-def aboutMe(request):
+def about_me(request):
     return render(request, 'catalog/aboutMe.html')
 
 
@@ -40,6 +40,7 @@ def index(request):
 def book_detail(request, pk):
     book = Book.objects.get(pk=pk)
     marker = False
+    print(request.META.get('HTTP_REFERER'))
     if request.user.is_authenticated:
         bl = BookList.objects.filter(user=request.user)
         for i in bl:
@@ -54,9 +55,26 @@ def book_detail(request, pk):
 #     template_name = 'catalog/bookDetail.html'
 
 
+@login_required
+def add_book(request):
+    form = CreateBookForm(request.POST, request.FILES or None)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse_lazy('catalog:index'))
+    return render(request, 'catalog/add_book.html', {'form': form})
+
+
 def about_user(request, username):
     user = User.objects.get(Q(username=username.title()) | Q(username=username.lower()))
     return render(request, 'catalog/about_user.html', {'user': user})
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def delete_book(request, pk):
+    book = get_object_or_404(Book, pk=pk)
+    book.delete()
+    get_book = Book.objects.all()
+    return HttpResponseRedirect(reverse("catalog:index"))
 
 
 @login_required
@@ -69,16 +87,17 @@ def add_to_booklist(request, title):
                                                           )
 
     messages.info(request, 'The item was added to your wishlist')
-    return redirect('catalog:index')
+    return redirect(request.META.get('HTTP_REFERER'))
 
 
 @login_required
 def delete_from_booklist(request, title):
     book = Book.objects.get(title=title)
+    print(request.META.get('HTTP_REFERER'))
     bl = BookList.objects.filter(user=request.user)
     bl.get(book_list=book).delete()
     messages.info(request, 'The item was deleted to your wishlist')
-    return redirect('catalog:index')
+    return redirect(request.META.get('HTTP_REFERER'))
 
 
 # class MyBookslist(ListView):
@@ -92,7 +111,8 @@ def delete_from_booklist(request, title):
 #     #     pass
 # return MyBooksList.objects.filter(user=self.request.user)
 
-def myBooksList(request):
+@login_required
+def my_books_list(request):
     if request.user.is_anonymous or not request.user.is_authenticated:
         list_of_mybook = 'Войдите, что увидеть список своих книг.'
         sum_pages = 0

@@ -10,7 +10,12 @@ active
 
 
 {% if context %}
-<p class="pages_sum">Общее количество страниц: {{sum}}</p>
+<div class="status_bar">
+    <p class="pages_sum">Общее количество страниц: {{sum}}</p>
+    <a href="{% url 'catalog:add_book' %}" class="adding_book_link">
+        <button type="button" class="btn btn-success adding_book_button">Добавить книгу</button>
+    </a>
+</div>
 {% for item in context %}
 <div class="book_preview">
     <a href="{% url 'catalog:book_detail' item.id%}" class="book_preview_link">
