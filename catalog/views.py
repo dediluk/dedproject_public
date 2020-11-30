@@ -100,22 +100,67 @@ def delete_from_booklist(request, title):
     return redirect(request.META.get('HTTP_REFERER'))
 
 
+# if form.cleaned_data['title']:
+#     book.title = form.cleaned_data['title']
+# if form.cleaned_data['pages']:
+#     book.pages = form.cleaned_data['pages']
+# if form.cleaned_data['image']:
+#     book.image = form.cleaned_data['image']
+# book.save()
+
+
 def edit_data(request, pk):
-    try:
-        book = Book.objects.get(pk=pk)
-        if request.method == 'POST':
-            book.title = request.POST.get('title')
-            book.pages = request.POST.get('pages')
-            print('============================')
-            print(request.POST.get('image'))
-            if request.POST.get('image'):
-                book.image = request.POST.get('image')
-            book.save()
-            return render(request, 'catalog/bookDetail.html', {'book':book})
-        else:
-            return render(request, "catalog/edit_data.html", {"book": book})
-    except Book.DoesNotExist:
-        return HttpResponseNotFound("<h2>Person not found</h2>")
+
+    book = Book.objects.get(pk=pk)
+    form = CreateBookForm(initial={'title': book.title, 'pages': book.pages, 'image': book.image})
+    if request.method == 'POST':
+
+        form = CreateBookForm(request.POST, request.FILES or None)
+        print(form['title'].value())
+        if form['title'].value():
+            book.title = form['title'].value()
+        if form['pages'].value():
+            book.pages = form['pages'].value()
+        if form['image'].value():
+            book.image = form['image'].value()
+        book.save()
+        # if form.is_valid():
+        #     book.title = form.cleaned_data['title']
+        #     book.pages = form.cleaned_data['pages']
+        #     book.image = form.cleaned_data['image']
+        #     book.save()
+        #
+        #     return HttpResponseRedirect(reverse_lazy('catalog:index'))
+        return HttpResponseRedirect(reverse_lazy('catalog:index'))
+    else:
+        return render(request, "catalog/edit_data.html", {"form": form})
+#         book.title = request.POST.get('title')
+#         book.pages = request.POST.get('pages')
+#         print('============================')
+#         print(request.FILES.get('image'))
+#         if request.POST.get('image'):
+#             book.image = request.FILES.get('image')
+#         book.save()
+#         return render(request, 'catalog/bookDetail.html', {'book':book})
+#     else:
+#         return render(request, "catalog/edit_data.html", {"book": book})
+# except Book.DoesNotExist:
+#     return HttpResponseNotFound("<h2>Person not found</h2>")
+    # try:
+    #
+    #     if request.method == 'POST':
+    #         book.title = request.POST.get('title')
+    #         book.pages = request.POST.get('pages')
+    #         print('============================')
+    #         print(request.FILES.get('image'))
+    #         if request.POST.get('image'):
+    #             book.image = request.FILES.get('image')
+    #         book.save()
+    #         return render(request, 'catalog/bookDetail.html', {'book':book})
+    #     else:
+    #         return render(request, "catalog/edit_data.html", {"book": book})
+    # except Book.DoesNotExist:
+    #     return HttpResponseNotFound("<h2>Person not found</h2>")
 
 
 
