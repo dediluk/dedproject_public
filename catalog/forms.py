@@ -14,21 +14,13 @@ class MyForm(UserCreationForm):
         fields = ('username', 'email', 'password1', 'password2')
 
 
-
 class CreateBookForm(ModelForm):
     class Meta:
         model = Book
         fields = [
             'title',
             'image',
-            'pages'
+            'pages',
+            'book_add_user'
         ]
-        # widgets = {
-        #     'title': forms.TextInput(attrs={
-        #         'rows': 2,
-        #         'placeholder': 'Название'
-        #     }),
-        #     'pages': forms.IntegerField(
-        #
-        #     )
-        # }
+        widgets = {'book_add_user': forms.HiddenInput()}

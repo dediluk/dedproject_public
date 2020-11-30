@@ -65,6 +65,9 @@ h4 {
 
 /* end base html */
 
+
+/* about me  */
+
 .social_link:hover{
     opacity: 0.7;
 }
@@ -86,6 +89,7 @@ h4 {
     height:55px;
 }
 
+/* end about me */
 
 /* index hmtl */
 .adding_book_button{ margin-right: 15px; margin-top: -6px;float: right;/* text-align:right; */}
@@ -121,12 +125,9 @@ h4 {
     margin-left: auto;
     margin-right: auto;
     height: 274px;
-    /* float: left; */
 }
 
 .book_preview_image:hover{
-    /*opacity: 0.7;*/
-
 
 }
 
@@ -147,6 +148,8 @@ h4 {
 color:#343a40;
 
 }
+
+/* end index html */
 
 /* login and registration form */
 
@@ -232,7 +235,6 @@ input[type=password],textarea, input[type=file], select{
 
 
 .image_detail_div{
-    /* margin: 0 auto; */
     text-align: center;
 }
 
