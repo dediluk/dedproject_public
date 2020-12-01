@@ -211,6 +211,11 @@ input[type=password],textarea, input[type=file], select{
       border-radius: 5px 5px 5px 5px;
 }
 
+.sign_in_google:hover{
+    opacity: 0.9;
+}
+
+
 /* end login and registration form */
 
 
@@ -239,3 +244,9 @@ input[type=password],textarea, input[type=file], select{
 }
 
 /* end book details */
+
+/* about user */
+.p_td {
+    color: black;
+}
+/* end about user */

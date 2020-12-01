@@ -2,6 +2,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.core.mail import send_mail, EmailMessage
+
 from .forms import *
 from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404, redirect
@@ -23,6 +25,20 @@ class RegisterFormView(FormView):
 
     def form_valid(self, form):
         form.save()
+        # print(User.objects.get(username=form.cleaned_data['username']))
+        # user = User.objects.get(username=form.cleaned_data['username'])
+        # print(user)
+        # user.is_active = False
+        # email_subject = 'Активация аккаунта'
+        # email_body = 'TEST'
+        # email = send_mail(
+        #     email_subject,
+        #     email_body,
+        #     settings.EMAIL_HOST_USER,
+        #     ['dediluk@gmail.com'],
+        # )
+        #
+        # email.send(fail_silently=True)
         return super(RegisterFormView, self).form_valid(form)
 
     def form_invalid(self, form):
@@ -96,6 +112,7 @@ def delete_from_booklist(request, title):
     bl.get(book_list=book).delete()
     messages.info(request, 'The item was deleted to your wishlist')
     return redirect(request.META.get('HTTP_REFERER'))
+
 
 @user_passes_test(lambda u: u.is_superuser)
 def edit_data(request, pk):

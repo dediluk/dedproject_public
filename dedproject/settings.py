@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
+import smtplib
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,7 +25,7 @@ SECRET_KEY = '2u@wd#80b&ix8)!c099o#^vx)$sf5h9!tm8fm_s+j!p1%$o^6!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0:5000', '127.0.0.1', '127.0.0.1:8000', 'dedproject.herokuapp.com']
+ALLOWED_HOSTS = ['0.0.0.0:5000', '127.0.0.1', '127.0.0.1:8000', 'dedproject.herokuapp.com', 'localhost']
 
 # Application definition
 
@@ -36,7 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'catalog',
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google'
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -69,6 +78,16 @@ TEMPLATES = [
     },
 ]
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_HOST_USER = 'dediluk@yandex.ru'
+EMAIL_HOST_PASSWORD = 'kkoksrjtgwyabaml'
+EMAIL_PORT = 587
+smtplib.SMTP_SSL()
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '963172293004-oc4jr29g6t88k2ccmc7kjd62njpoq4sb.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '0HLGrPuLBbWKoMOD1DoLS7cB'
+
 WSGI_APPLICATION = 'dedproject.wsgi.application'
 
 # Database
@@ -84,6 +103,17 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+AUTHENTICATION_BACKENDS = [
+
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+    # 'social_core.backends.google.GoogleOAuth2'
+
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -128,3 +158,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+LOGIN_REDIRECT_URL = '/'

@@ -24,3 +24,7 @@ class CreateBookForm(ModelForm):
             'book_add_user'
         ]
         widgets = {'book_add_user': forms.HiddenInput()}
+
+        requireds = {
+            'images': False,
+        }

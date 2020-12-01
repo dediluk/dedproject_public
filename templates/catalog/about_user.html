@@ -2,5 +2,23 @@
 {%block title%} {{user.username|title}} {%endblock%}
 
 {% block content %}
-<p class="username">{{user.is_staff}}</p>
+<table>
+
+    <tr>
+        <td><p class="p_td">Ник:</p></td>
+        <td><p class="p_td">{{user.get_username}}</p></td>
+    </tr>
+    <tr>
+        <td><p class="p_td">Почта:</p></td>
+        <td><p class="p_td">{{user.email}}</p></td>
+    </tr>
+    <tr>
+        <td><p class="p_td">Админ:</p></td>
+        {% if user.is_staff %}
+        <td><p class="p_td">Да</p></td>
+        {% else %}
+        <td><p class="p_td">Нет</p></td>
+        {% endif %}
+    </tr>
+</table>
 {% endblock %}
