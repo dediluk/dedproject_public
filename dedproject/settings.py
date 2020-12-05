@@ -83,6 +83,7 @@ EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_HOST_USER = 'dediluk@yandex.ru'
 EMAIL_HOST_PASSWORD = 'kkoksrjtgwyabaml'
 EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 smtplib.SMTP_SSL()
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '963172293004-oc4jr29g6t88k2ccmc7kjd62njpoq4sb.apps.googleusercontent.com'

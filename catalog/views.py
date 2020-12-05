@@ -1,6 +1,7 @@
 from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django.core.mail import send_mail, EmailMessage
 
@@ -44,6 +45,55 @@ class RegisterFormView(FormView):
     def form_invalid(self, form):
         return super(RegisterFormView, self).form_invalid(form)
 
+@login_required
+def edit_profile(request):
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    else:
+        form = EditProfileForm(instance=request.user)
+        args = {'form': form}
+        return render(request, 'accounts/edit_profile.html', args)
+
+
+# class PasswordChangeFormView(FormView):
+#     form_class = PasswordChangeForm
+#     success_url = reverse_lazy('catalog:index')
+#     template_name = 'accounts/change-password.html'
+#     use
+#
+#     def form_valid(self, form):
+#         form.save()
+#         return super(PasswordChangeForm, self).form_valid(form)
+#
+#     def form_invalid(self, form):
+#         return super(PasswordChangeForm, self).form_invalid(form)
+
+@login_required()
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(data=request.POST, user=request.user)
+
+        if form.is_valid():
+            print('ok')
+            form.save()
+            update_session_auth_hash(request, form.user)
+            print('after auth')
+            return redirect('catalog:profile')
+        else:
+            print(form.error_messages)
+            return render(request, 'accounts/change-password.html', {'form': form})
+            # return redirect('catalog:change_password')
+
+    else:
+        form = PasswordChangeForm(user=request.user)
+        args = {'form': form}
+        return render(request, 'accounts/change-password.html', args)
+
 
 def index(request):
     context = Book.objects.all()
@@ -79,9 +129,12 @@ def add_book(request):
     return render(request, 'catalog/add_book.html', {'form': form})
 
 
-def about_user(request, username):
-    user = User.objects.get(Q(username=username.title()) | Q(username=username.lower()))
-    return render(request, 'catalog/about_user.html', {'user': user})
+def profile(request, username=None):
+    if username:
+        user = User.objects.get(username=username)
+    else:
+        user = request.user
+    return render(request, 'catalog/profile.html', {'user': user})
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -115,7 +168,7 @@ def delete_from_booklist(request, title):
 
 
 @user_passes_test(lambda u: u.is_superuser)
-def edit_data(request, pk):
+def edit_book_data(request, pk):
     book = Book.objects.get(pk=pk)
     form = CreateBookForm(initial={'title': book.title, 'pages': book.pages, 'image': book.image})
     if request.method == 'POST':

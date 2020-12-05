@@ -215,6 +215,10 @@ input[type=password],textarea, input[type=file], select{
     opacity: 0.9;
 }
 
+.login_error_text{
+    text-align: center;
+}
+
 
 /* end login and registration form */
 
@@ -250,3 +254,10 @@ input[type=password],textarea, input[type=file], select{
     color: black;
 }
 /* end about user */
+
+
+/* edit user data */
+.helptext, #id_password{
+    color: black;
+}
+/*end edit user data*/

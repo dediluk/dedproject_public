@@ -20,5 +20,19 @@
         <td><p class="p_td">Нет</p></td>
         {% endif %}
     </tr>
+
 </table>
+
+{% if request.user == user%}
+<a href="{% url 'catalog:edit_profile' %}" class="edit_profile_link">
+    <button type="button" class="btn btn-success register_button">
+        Редактировать
+    </button>
+</a>
+<a href="{% url 'catalog:change_password' %}" class="edit_profile_link">
+    <button type="button" class="btn btn-danger register_button">
+         Изменить пароль
+    </button>
+</a>
+{% endif %}
 {% endblock %}

@@ -12,17 +12,32 @@
 
 {% block content %}
 
+
 {% if form.errors %}
-<p>Error</p>
+{% for field in form %}
+{% for error in field.errors %}
+<div class="alert alert-danger">
+    <strong>{{ error|escape }}</strong>
+</div>
+{% endfor %}
+{% endfor %}
+{% for error in form.non_field_errors %}
+<div class="alert alert-danger">
+    <strong>
+        <p class="login_error_text">{{ error|escape }}</p>
+    </strong>
+</div>
+{% endfor %}
 {% endif %}
 
-{% if next %}
+
 {% if user.is_authenticated %}
-<p>Нет доступа</p>
+<div class="alert alert-success">
+    <strong>
+        <p class="login_error_text">Вы уже вошли в аккаунт</p>
+    </strong>
+</div>
 {% else %}
-<!--        <p>Войдите в аккаунт, чтобы увидеть данную страницу</p>-->
-{% endif %}
-{% endif %}
 <div class="login_div">
     <form method='post' action="{% url 'login' %}">
         {% csrf_token %}
@@ -43,5 +58,7 @@
 
 </div>
 <p class='lost_password_link'><a class='lost_password_link' href="{% url 'password_reset'%}">Забыли пароль?</a></p>
+{% endif %}
+
 
 {% endblock content %}

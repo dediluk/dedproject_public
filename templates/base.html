@@ -38,7 +38,7 @@
                 {% if user.is_superuser %}
                 <a class="nav-link" href="{% url 'admin:index' %}">{{request.user.get_username|title}}</a>
                 {% else %}
-                        <a class="nav-link nav-link-username" href="{% url 'catalog:about_user' user.get_username%}">{{request.user.get_username|title }}</a>
+                        <a class="nav-link nav-link-username" href="{% url 'catalog:profile' user.get_username%}">{{request.user.get_username|title }}</a>
                 {% endif %}
                 <a class="nav-link" href="{% url 'logout' %}?next={{request.path}}">Выйти</a>
             {% else %}
