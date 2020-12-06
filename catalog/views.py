@@ -20,7 +20,7 @@ def about_me(request):
 
 
 class RegisterFormView(FormView):
-    form_class = UserCreationForm
+    form_class = MyUserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'registration/register.html'
 
