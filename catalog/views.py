@@ -45,6 +45,7 @@ class RegisterFormView(FormView):
     def form_invalid(self, form):
         return super(RegisterFormView, self).form_invalid(form)
 
+
 @login_required
 def edit_profile(request):
     if request.method == 'POST':
@@ -79,15 +80,11 @@ def change_password(request):
         form = PasswordChangeForm(data=request.POST, user=request.user)
 
         if form.is_valid():
-            print('ok')
             form.save()
             update_session_auth_hash(request, form.user)
-            print('after auth')
             return redirect('catalog:profile')
         else:
-            print(form.error_messages)
             return render(request, 'accounts/change-password.html', {'form': form})
-            # return redirect('catalog:change_password')
 
     else:
         form = PasswordChangeForm(user=request.user)
@@ -102,8 +99,9 @@ def index(request):
     return render(request, 'catalog/index.html', {'context': context, 'sum': sum['pages__sum']})
 
 
-def book_detail(request, pk):
-    book = Book.objects.get(pk=pk)
+def book_detail(request, slug):
+    book = Book.objects.get(slug=slug)
+    print(book.slug)
     marker = False
     if request.user.is_authenticated:
         bl = BookList.objects.filter(user=request.user)
@@ -120,9 +118,7 @@ def add_book(request):
 
     if form.is_valid():
         form.save()
-        print(Book.objects.all().order_by('book_add_user'))
         book = Book.objects.filter(title=form['title'].value()).order_by('book_add_user')[0]
-        print(book)
         book.book_add_user = request.user
         book.save()
         return HttpResponseRedirect(reverse_lazy('catalog:index'))
@@ -138,8 +134,8 @@ def profile(request, username=None):
 
 
 @user_passes_test(lambda u: u.is_superuser)
-def delete_book(request, pk):
-    book = get_object_or_404(Book, pk=pk)
+def delete_book(request, slug):
+    book = get_object_or_404(Book, slug=slug)
     book.delete()
     get_book = Book.objects.all()
     return HttpResponseRedirect(reverse("catalog:index"))
@@ -168,8 +164,8 @@ def delete_from_booklist(request, title):
 
 
 @user_passes_test(lambda u: u.is_superuser)
-def edit_book_data(request, pk):
-    book = Book.objects.get(pk=pk)
+def edit_book_data(request, slug):
+    book = Book.objects.get(slug=slug)
     form = CreateBookForm(initial={'title': book.title, 'pages': book.pages, 'image': book.image})
     if request.method == 'POST':
         form = CreateBookForm(request.POST, request.FILES or None)

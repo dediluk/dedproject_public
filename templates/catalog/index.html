@@ -18,8 +18,8 @@ active
 </div>
 {% for item in context %}
 <div class="book_preview">
-    <a href="{% url 'catalog:book_detail' item.id%}" class="book_preview_link">
-        <img class='book_preview_image' src="{{item.image.url}}" alt="">
+    <a href="{% url 'catalog:book_detail' item.slug%}" class="book_preview_link">
+        <img class='book_preview_image' src="{{item.image}}" alt="">
         <p class="book_preview_title">{{item.title}}</p>
     </a>
 </div>

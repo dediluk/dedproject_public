@@ -11,13 +11,13 @@ urlpatterns = [
     path('mybookslist/', my_books_list, name='mybookslist'),
     path('add_to_booklist/<str:title>', add_to_booklist, name='add_to_booklist'),
     path('delete_from_booklist/<str:title>', delete_from_booklist, name='delete_from_booklist'),
-    path('book_details/<int:pk>/', book_detail, name='book_detail'),
+    path('book_details/<str:slug>/', book_detail, name='book_detail'),
     path('add_book/', add_book, name='add_book'),
     path('mybookslist/', my_books_list, name='mybookslist'),
     path('add_to_booklist/<str:title>', add_to_booklist, name='add_to_booklist'),
     path('delete_from_booklist/<str:title>', delete_from_booklist, name='delete_from_booklist'),
-    path('delete_book/<int:pk>', delete_book, name='delete_book'),
-    path('edit_book_data/<int:pk>', edit_book_data, name='edit_book_data'),
+    path('delete_book/<str:slug>/', delete_book, name='delete_book'),
+    path('edit_book_data/<str:slug>/', edit_book_data, name='edit_book_data'),
 
     # Site
     path('about', about_me, name='aboutMe'),

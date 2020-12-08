@@ -8,7 +8,7 @@
 <div class="book_details">
     <div class="image_and_button">
         <div class="image_detail_div">
-            <img class='book_detail_image' src="{{book.image.url}}" alt="">
+            <img class='book_detail_image' src="{{book.image}}" alt="">
         </div>
         {% if not marker %}
         <p class="p_add_to_booklist_link">
@@ -31,14 +31,14 @@
         {% if user.is_superuser%}
 
         <p class="p_delete_from_db">
-            <a href="{% url 'catalog:delete_book' book.id %}" class="">
+            <a href="{% url 'catalog:delete_book' book.slug %}" class="">
                 <button type="button" class="btn btn-danger register_button">
                     Удалить книгу
                 </button>
             </a>
         </p>
         <p class="p_edit_data">
-            <a href="{% url 'catalog:edit_book_data' book.id %}" class="">
+            <a href="{% url 'catalog:edit_book_data' book.slug %}" class="">
                 <button type="button" class="btn btn-success register_button">
                     Редактировать
                 </button>
