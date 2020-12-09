@@ -95,8 +95,21 @@ def change_password(request):
 def index(request):
     context = Book.objects.all()
     sum = Book.objects.aggregate(Sum('pages'))
+    marker = False
+    book_in_booklist = []
+    if request.user.is_authenticated:
+        # print(dir(context.iterator()))
+        bl = BookList.objects.filter(user=request.user)
 
-    return render(request, 'catalog/index.html', {'context': context, 'sum': sum['pages__sum']})
+        for bl_book in bl:
+            # print('=========')
+            # print(context.values())
+            # print(bl_book.book_list.title in context.values())
+
+            for book in context:
+                if bl_book.book_list.title == book.title:
+                    book_in_booklist.append(book)
+    return render(request, 'catalog/index.html', {'context': context, 'book_in_booklist': book_in_booklist, 'sum': sum['pages__sum']})
 
 
 def book_detail(request, slug):

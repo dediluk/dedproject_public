@@ -11,21 +11,70 @@ active
 
 {% if context %}
 <div class="status_bar">
-    <p class="pages_sum">Общее количество страниц: {{sum}}</p>
+    <p class="pages_sum">Общее количество страниц: {{sum}} </p>
     <a href="{% url 'catalog:add_book' %}" class="adding_book_link">
         <button type="button" class="btn btn-success adding_book_button">Добавить книгу</button>
     </a>
 </div>
-{% for item in context %}
+
+
+{% for book in context %}
+
+
 <div class="book_preview">
-    <a href="{% url 'catalog:book_detail' item.slug%}" class="book_preview_link">
-        <img class='book_preview_image' src="{{item.image}}" alt="">
-        <p class="book_preview_title">{{item.title}}</p>
-    </a>
+
+
+    <div class="book_preview_image_div">
+
+        <img class='book_preview_image' src="{{book.image}}" alt="">
+        <div class="index_buttons">
+
+            {% if user.is_superuser%}
+
+                <a href="{% url 'catalog:delete_book' book.slug %}" class="">
+                    <button type="button" class="btn btn-danger index_book_delete_button"
+                            onclick="return confirm('Удалить книгу?');">
+                        Удалить книгу
+                    </button>
+                </a>
+            {% endif %}
+
+            {% if not book in book_in_booklist %}
+                <a href="{% url 'catalog:add_to_booklist' book.title%}" class="">
+                    <button type="button" class="btn btn-primary index_book_add_to_booklist_button">
+                        Добавить в Мои книги
+                    </button>
+                </a>
+
+            {% else %}
+                <a href="{% url 'catalog:delete_from_booklist' book.title%}" class="">
+                    <button type="button" class="btn btn-danger index_book_delete_from_booklist_button"
+                            onclick="return confirm('Удалить из Мои книги?');">
+                        Удалить из Мои книги
+                    </button>
+                </a>
+
+
+            {% endif %}
+            {% if user.is_superuser%}
+
+            <p class="p_index_book_edit_data_button">
+                <a href="{% url 'catalog:edit_book_data' book.slug %}" class="">
+                    <button type="button" class="btn btn-success index_book_edit_data_button">
+                        Редактировать
+                    </button>
+                </a>
+            </p>
+            {% endif %}
+        </div>
+
+    </div>
+    <p class="book_preview_title">{{book.title}}</p>
 </div>
 
 {% endfor %}
 
 {% endif %}
+
 
 {% endblock %}

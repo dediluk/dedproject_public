@@ -11,7 +11,7 @@ class Book(models.Model):
     title = models.CharField('Название', max_length=150)
     pages = models.IntegerField('Количество страниц')
     # image = models.ImageField("Обложка", upload_to='images/books', blank=True)
-    image = models.CharField("Обложка",  blank=True, max_length=1500)
+    image = models.CharField("Ссылка на обложку",  blank=True, max_length=250)
     book_add_user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Добавил', blank=True, null=True,
                                       on_delete=models.DO_NOTHING)
     slug = models.SlugField(null=True, blank=True, default=None, unique=True)

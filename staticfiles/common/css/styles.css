@@ -1,11 +1,13 @@
 /* base html */
 
-.nav-link{ text-decoration: none;
- color:rgba(255, 255, 255, 0.5)}
-
-.nav-link:hover{
+.nav-link {
     text-decoration: none;
-    color:rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.nav-link:hover {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.75);
 }
 
 * {
@@ -13,12 +15,12 @@
     padding: 0;
 }
 
-html,body{
+html, body {
     height: 100%;
 }
 
 li {
-    color:black;
+    color: black;
 }
 
 .wrapper {
@@ -28,9 +30,7 @@ li {
 }
 
 
-
-.container{
-
+.container {
     margin-top: 27px;
 }
 
@@ -54,7 +54,7 @@ footer {
     background-color: #343a40;
 }
 
-p{
+p {
     text-align: inherit;
     color: black;
 }
@@ -68,41 +68,48 @@ h4 {
 
 /* about me  */
 
-.social_link:hover{
+.social_link:hover {
     opacity: 0.7;
 }
 
-.socials_div{padding-left: 239px;}
+.socials_div {
+    padding-left: 239px;
+}
 
-.about_img_div{}
+.about_img_div {
+}
 
-.about_img{
-    height:300px;
+.about_img {
+    height: 300px;
     float: left;
 }
 
-.social_li{
+.social_li {
     display: inline
 }
 
 .social {
-    height:55px;
+    height: 55px;
 }
 
 /* end about me */
 
 /* index hmtl */
-.adding_book_button{ margin-right: 15px; margin-top: -6px;float: right;/* text-align:right; */}
+.adding_book_button {
+    margin-right: 15px;
+    margin-top: -6px;
+    float: right; /* text-align:right; */
+}
 
-.pages_sum{
+.pages_sum {
     float: left;
 }
 
-.status_bar{
+.status_bar {
     margin-bottom: 49px;
 }
 
-.book_preview{
+.book_preview {
     align-content: center;
     height: 350px;
     width: 200px;
@@ -110,42 +117,119 @@ h4 {
     margin-right: 10px;
 }
 
-.book_preview:hover{
-      -webkit-transform: scale(1.05);
-  -ms-transform: scale(1.05);
-  transform: scale(1.05);
+.book_preview:hover {
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
 }
 
-.book_preview_link:hover{
+.book_preview_link:hover {
     text-decoration: none;
 }
 
-.book_preview_image{
+.book_preview_image {
     display: block;
     margin-left: auto;
     margin-right: auto;
     height: 274px;
 }
 
-.book_preview_image:hover{
+.book_preview_image:hover {
 
 }
 
-.book_preview_title{
+.book_preview_image_div {
+    position: relative;
+}
+
+.book_preview_image_div:hover .index_buttons{
+    display: block;
+    position: absolute;
+}
+
+.book_preview_image_div:hover .book_preview_image{
+    opacity: 0.7;
+}
+
+.index_buttons {
+    display: none;
+    top: 28%;
+    left: 50%;
+    height: 274px;
+}
+
+.index_book_delete_from_booklist_button {font-size: 14px;transform: translate(-50%, -50%);-ms-transform: translate(-50%, -50%);}
+
+.index_book_delete_button, .index_book_add_to_booklist_button, .index_book_edit_data_button{
+    top: 50%;
+    left: 50%;
+    font-size: 14px;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    /* margin-bottom: 25px; */
+}
+
+.index_book_delete_button{
+    margin-bottom: 20px;
+}
+
+.index_book_button:hover {
+    position: absolute;
+    display: block;
+    visibility: visible;
+}
+
+.index_book_button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 14px;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    display: none;
+    /*visibility: hidden;*/
+}
+
+.index_book_button:hover {
+    position: absolute;
+    display: block;
+    visibility: visible;
+}
+
+
+.index_book_button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 14px;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    display: none;
+    /*visibility: hidden;*/
+}
+
+.index_book_button:hover {
+    position: absolute;
+    display: block;
+    visibility: visible;
+}
+
+
+.book_preview_title {
     text-align: center;
 }
 
-.book_preview_title:hover{
+.book_preview_title:hover {
     opacity: 0.7;
 }
 
 
 .index_link, .login_link {
-    color:#343a40a3;
+    color: #343a40a3;
 }
 
-.index_link, .login_link: hover{
-color:#343a40;
+.index_link, .login_link:hover {
+    color: #343a40;
 
 }
 
@@ -153,7 +237,7 @@ color:#343a40;
 
 /* login and registration form */
 
-.register_form_div, .login_div{
+.register_form_div, .login_div {
     margin-top: 38px;
     display: flex;
     align-items: center;
@@ -163,59 +247,59 @@ color:#343a40;
 
 .login_button {
     margin-top: 4px;
-    text-align:center;
+    text-align: center;
     font-size: revert;
 }
 
 .register_button {
-    text-align:center;
+    text-align: center;
     font-size: revert;
 }
 
-.lost_password_link{
-    text-align:center;
+.lost_password_link {
+    text-align: center;
 }
 
 
-input[type=text], input[type=email]{
-      background-color: #f6f6f6;
-      border: none;
-      padding: 4px;
-      color: #0d0d0d;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px;
-      border: 2px solid #f6f6f6;
-      border-radius: 5px 5px 5px 5px;
+input[type=text], input[type=email] {
+    background-color: #f6f6f6;
+    border: none;
+    padding: 4px;
+    color: #0d0d0d;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px;
+    border: 2px solid #f6f6f6;
+    border-radius: 5px 5px 5px 5px;
 }
 
-input[type=text]:focus{
-    background-color:#fff;
-    border-bottom:2px solid #5fbae9;
+input[type=text]:focus {
+    background-color: #fff;
+    border-bottom: 2px solid #5fbae9;
 }
 
 
-input[type=password],textarea, input[type=file], select{
-      background-color: #f6f6f6;
-      border: none;
-      padding: 4px;
-      color: #0d0d0d;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 5px;
-      border: 2px solid #f6f6f6;
-      border-radius: 5px 5px 5px 5px;
+input[type=password], textarea, input[type=file], select {
+    background-color: #f6f6f6;
+    border: none;
+    padding: 4px;
+    color: #0d0d0d;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+    border: 2px solid #f6f6f6;
+    border-radius: 5px 5px 5px 5px;
 }
 
-.sign_in_google:hover{
+.sign_in_google:hover {
     opacity: 0.9;
 }
 
-.login_error_text{
+.login_error_text {
     text-align: center;
 }
 
@@ -224,26 +308,26 @@ input[type=password],textarea, input[type=file], select{
 
 
 /* book details */
-.book_detail_image{
-    height:274px;
+.book_detail_image {
+    height: 274px;
 }
 
-.book_detail_title{
+.book_detail_title {
     margin-left: 200px;
 }
 
-.p_add_to_booklist_link, .p_delete_from_booklist_link, .p_delete_from_db, .p_edit_data{
+.p_add_to_booklist_link, .p_delete_from_booklist_link, .p_delete_from_db, .p_edit_data {
     margin-top: 9px;
-    text-align:center;
+    text-align: center;
 }
 
-.image_and_button{
-    width:192px;
+.image_and_button {
+    width: 192px;
     float: left;
 }
 
 
-.image_detail_div{
+.image_detail_div {
     text-align: center;
 }
 
@@ -253,11 +337,13 @@ input[type=password],textarea, input[type=file], select{
 .p_td {
     color: black;
 }
+
 /* end about user */
 
 
 /* edit user data */
-.helptext, #id_password{
+.helptext, #id_password {
     color: black;
 }
+
 /*end edit user data*/

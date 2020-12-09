@@ -10,12 +10,48 @@
 <div class="status_bar">
     <p class="pages_sum">Общее количество страниц: {{sum_pages}} </p>
 </div>
-{%for item in list_of_mybook%}
+{%for book in list_of_mybook%}
 <div class="book_preview">
-    <a href="{% url 'catalog:book_detail' item.book_list.id%}" class="book_preview_link">
-        <img class='book_preview_image' src="{{item.book_list.image.url}}" alt="">
-        <p class="book_preview_title">{{item.book_list.title}}</p>
-    </a>
+    <div class="book_preview_image_div">
+        <img class='book_preview_image' src="{{book.book_list.image}}" alt="">
+
+        <div class="index_buttons">
+
+            {% if user.is_superuser%}
+
+            <a href="{% url 'catalog:delete_book' book.book_list.slug %}" class="">
+                <button type="button" class="btn btn-danger index_book_delete_button"
+                        onclick="return confirm('Удалить книгу?');">
+                    Удалить книгу
+                </button>
+            </a>
+            {% endif %}
+
+
+            <a href="{% url 'catalog:delete_from_booklist' book.book_list.title%}" class="">
+                <button type="button" class="btn btn-danger index_book_delete_from_booklist_button"
+                        onclick="return confirm('Удалить из Мои книги?');">
+                    Удалить из Мои книги
+                </button>
+            </a>
+
+
+            {% if user.is_superuser%}
+
+            <p class="p_index_book_edit_data_button">
+                <a href="{% url 'catalog:edit_book_data' book.book_list.slug %}" class="">
+                    <button type="button" class="btn btn-success index_book_edit_data_button">
+                        Редактировать
+                    </button>
+                </a>
+            </p>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <p class="book_preview_title">{{book.book_list.title}}</p>
+
 </div>
 
 {% endfor %}
