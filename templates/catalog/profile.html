@@ -1,38 +1,63 @@
 {% extends 'base.html' %}
-{%block title%} {{user.username|title}} {%endblock%}
+
+{%block title%}
+{% if user.is_authenticated %}
+{{user.username|title}}
+{% else %}
+Аноним
+{% endif %}
+{%endblock%}
 
 {% block content %}
-<table>
+<div class="profile_div">
 
-    <tr>
-        <td><p class="p_td">Ник:</p></td>
-        <td><p class="p_td">{{user.get_username}}</p></td>
-    </tr>
-    <tr>
-        <td><p class="p_td">Почта:</p></td>
-        <td><p class="p_td">{{user.email}}</p></td>
-    </tr>
-    <tr>
-        <td><p class="p_td">Админ:</p></td>
-        {% if user.is_staff %}
-        <td><p class="p_td">Да</p></td>
-        {% else %}
-        <td><p class="p_td">Нет</p></td>
-        {% endif %}
-    </tr>
+    <table>
 
-</table>
+        <tr>
+            <td><p class="p_td">Ник:</p></td>
+            {% if not user.is_authenticated %}
+            <td><p class="p_td">Аноним</p></td>
+            {% else %}
+            <td><p class="p_td">{{user.get_username}}</p></td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td><p class="p_td">Почта:</p></td>
+            {% if not user.is_authenticated %}
+            <td><p class="p_td">anonym@anonymmail.an</p></td>
+            {% else %}
+            <td><p class="p_td">{{user.email}}</p></td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td><p class="p_td">Админ:</p></td>
+            {% if not user.is_authenticated %}
+            <td><p class="p_td">Нет, конечно</p></td>
+            {% elif user.is_staff%}
+            <td><p class="p_td">Да</p></td>
+            {% else %}
+            <td><p class="p_td">Нет</p></td>
+            {% endif %}
+        </tr>
 
-{% if request.user == user%}
-<a href="{% url 'catalog:edit_profile' %}" class="edit_profile_link">
-    <button type="button" class="btn btn-success register_button">
-        Редактировать
-    </button>
-</a>
-<a href="{% url 'catalog:change_password' %}" class="edit_profile_link">
-    <button type="button" class="btn btn-danger register_button">
-         Изменить пароль
-    </button>
-</a>
-{% endif %}
+    </table>
+
+
+</div>
+<div class="profile_edit_links">
+    {% if user.is_authenticated %}
+    {% if request.user == user%}
+    <a href="{% url 'catalog:edit_profile' %}" class="edit_profile_link">
+        <button type="button" class="btn btn-success register_button">
+            Редактировать
+        </button>
+    </a>
+    <a href="{% url 'catalog:change_password' %}" class="edit_profile_link">
+        <button type="button" class="btn btn-danger register_button edit_profile_button">
+            Изменить пароль
+        </button>
+    </a>
+    {% endif %}
+    {% endif %}
+</div>
 {% endblock %}

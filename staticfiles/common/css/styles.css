@@ -142,12 +142,12 @@ h4 {
     position: relative;
 }
 
-.book_preview_image_div:hover .index_buttons{
+.book_preview_image_div:hover .index_buttons {
     display: block;
     position: absolute;
 }
 
-.book_preview_image_div:hover .book_preview_image{
+.book_preview_image_div:hover .book_preview_image {
     opacity: 0.7;
 }
 
@@ -158,9 +158,13 @@ h4 {
     height: 274px;
 }
 
-.index_book_delete_from_booklist_button {font-size: 14px;transform: translate(-50%, -50%);-ms-transform: translate(-50%, -50%);}
+.index_book_delete_from_booklist_button {
+    font-size: 14px;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
 
-.index_book_delete_button, .index_book_add_to_booklist_button, .index_book_edit_data_button{
+.index_book_delete_button, .index_book_add_to_booklist_button, .index_book_edit_data_button {
     top: 50%;
     left: 50%;
     font-size: 14px;
@@ -169,7 +173,7 @@ h4 {
     /* margin-bottom: 25px; */
 }
 
-.index_book_delete_button{
+.index_book_delete_button {
     margin-bottom: 20px;
 }
 
@@ -237,7 +241,7 @@ h4 {
 
 /* login and registration form */
 
-.register_form_div, .login_div {
+.register_form_div, .login_div, .profile_div  {
     margin-top: 38px;
     display: flex;
     align-items: center;
@@ -334,8 +338,19 @@ input[type=password], textarea, input[type=file], select {
 /* end book details */
 
 /* about user */
+.profile_edit_links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
 .p_td {
     color: black;
+}
+
+.edit_profile_button {
+    margin-left: 5px;
 }
 
 /* end about user */
