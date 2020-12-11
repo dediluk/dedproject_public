@@ -2,9 +2,11 @@
 {% block title %} Редактировние профиля {% endblock %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-success">Изменить</button>
-</form>
+<div class="profile_div">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Изменить</button>
+    </form>
+</div>
 {% endblock %}

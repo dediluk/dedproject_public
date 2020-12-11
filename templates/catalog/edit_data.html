@@ -3,11 +3,13 @@
 {% block title%} Редактирование {% endblock %}
 
 {% block content%}
-<form method="POST" enctype="multipart/form-data">{% csrf_token %}
+<div class="profile_div">
+    <form method="POST" enctype="multipart/form-data">{% csrf_token %}
 
-    {{form.as_p}}
-    <p class="book_add_button">
-        <button type="submit" class="btn btn-primary" value="login">Изменить</button>
-    </p>
-</form>
+        {{form.as_p}}
+        <p class="book_add_button">
+            <button type="submit" class="btn btn-primary" value="login">Изменить</button>
+        </p>
+    </form>
+</div>
 {% endblock %}
