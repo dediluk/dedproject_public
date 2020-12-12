@@ -20,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '2u@wd#80b&ix8)!c099o#^vx)$sf5h9!tm8fm_s+j!p1%$o^6!'
+SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0:5000', '127.0.0.1', '127.0.0.1:8000', 'dedproject.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -78,16 +78,9 @@ TEMPLATES = [
     },
 ]
 
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_HOST_USER = 'dediluk@yandex.ru'
-EMAIL_HOST_PASSWORD = 'kkoksrjtgwyabaml'
-EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-smtplib.SMTP_SSL()
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '963172293004-oc4jr29g6t88k2ccmc7kjd62njpoq4sb.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '0HLGrPuLBbWKoMOD1DoLS7cB'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
 
 WSGI_APPLICATION = 'dedproject.wsgi.application'
 
@@ -97,10 +90,10 @@ WSGI_APPLICATION = 'dedproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd2gm16hdfjj8qk',
-        'USER': 'mgfqcjwlbkmojo',
-        'PASSWORD': '86490f1664508cb3c5d6b0bc12391bf953e15f62e04d8ff86a0b9927f0ba5b08',
-        'HOST': 'ec2-54-82-208-124.compute-1.amazonaws.com',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
         'PORT': '5432',
     }
 }
